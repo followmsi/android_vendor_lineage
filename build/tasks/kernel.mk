@@ -250,7 +250,7 @@ $(TARGET_PREBUILT_INT_KERNEL): $(KERNEL_CONFIG) $(DEPMOD)
 			echo "Building DTBs"; \
 			$(call make-kernel-target,dtbs); \
 		fi
-	$(hide) if grep -q '=m' $(KERNEL_CONFIG); then \
+	$(hide) if grep -q '^CONFIG_MODULES=y' $(KERNEL_CONFIG); then \
 			echo "Building Kernel Modules"; \
 			$(call make-kernel-target,modules) || exit "$$?"; \
 			echo "Installing Kernel Modules"; \
